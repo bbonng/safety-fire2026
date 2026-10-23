@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>우리 반 지진대피 안내 · 대구일중학교</title>
+<style>
+:root{--navy:#1B2A4A;--sky:#5B9BD5;--gold:#C9A227;--ink:#1A1A1A;--line:#D8E0EC;--bg:#F4F7FB;--red:#C0392B;--gc:#1B2A4A;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard','Malgun Gothic','맑은 고딕',sans-serif;color:var(--ink);background:var(--bg);line-height:1.65;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:560px;margin:0 auto;padding:0 16px 50px;}
+header{color:#fff;padding:28px 22px 22px;border-radius:0 0 18px 18px;}
+.g1{--gc:#B8901A;} .g2{--gc:#1F7A3D;} .g3{--gc:#1B2A4A;}
+.g1 header{background:linear-gradient(135deg,#C9A227,#a9881f);} .g2 header{background:linear-gradient(135deg,#1F7A3D,#176030);} .g3 header{background:linear-gradient(135deg,#1B2A4A,#23375f);}
+header .sup{font-size:13px;font-weight:600;opacity:.9;}
+header h1{font-size:26px;font-weight:800;margin:4px 0 9px;letter-spacing:-.01em;}
+header .when{display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.32);padding:5px 13px;border-radius:20px;font-size:13.5px;font-weight:700;}
+section{background:#fff;border:1px solid var(--line);border-radius:14px;padding:19px 18px;margin-top:14px;box-shadow:0 2px 8px rgba(27,42,74,.05);}
+.lab{font-size:14px;font-weight:800;color:var(--navy);margin-bottom:12px;}
+.act{display:flex;gap:12px;padding:12px 0;border-bottom:1px dashed var(--line);}
+.act:first-of-type{padding-top:2px;}
+.act:last-child{border-bottom:none;padding-bottom:0;}
+.act .n{flex:0 0 30px;height:30px;border-radius:50%;background:var(--gc);color:#fff;font-weight:800;display:flex;align-items:center;justify-content:center;font-size:14px;}
+.act .cue{font-size:12px;font-weight:700;color:#6b7891;}
+.act .do{font-size:15.5px;font-weight:800;color:var(--ink);line-height:1.45;margin-top:1px;}
+.act .sub{font-size:13px;color:#4a5568;margin-top:3px;}
+.flow{display:flex;flex-direction:column;}
+.fstep{display:flex;align-items:center;gap:12px;}
+.fbox{flex:1;background:#F7FAFD;border:1.5px solid var(--navy);color:var(--navy);font-weight:700;font-size:15px;padding:11px 14px;border-radius:10px;}
+.fstep:first-child .fbox{background:var(--navy);color:#fff;}
+.fstep:last-child .fbox{background:var(--gold);color:#fff;border-color:var(--gold);font-size:16px;}
+.fnum{flex:0 0 26px;height:26px;background:var(--sky);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;}
+.farr{height:14px;margin:3px 0 3px 12px;border-left:2px dashed var(--sky);}
+.tip{margin-top:12px;background:#EEF3FA;border-radius:9px;padding:10px 12px;font-size:13px;color:#33415c;}
+.yard svg{width:100%;height:auto;display:block;}
+.yard .cap{font-size:13.5px;margin-top:10px;text-align:center;}
+.yard .cap b{color:var(--gc);}
+.bag{display:flex;gap:12px;align-items:flex-start;}
+.bag .ic{font-size:28px;line-height:1;}
+.bag .t{font-size:15px;font-weight:800;color:var(--navy);}
+.bag .d{font-size:14px;color:#33415c;margin-top:3px;}
+.rules{display:grid;grid-template-columns:1fr 1fr;gap:9px;}
+.rule{background:#FFF6F5;border:1px solid #E6B0AA;border-radius:10px;padding:12px 8px;text-align:center;font-weight:700;font-size:13.5px;color:var(--red);line-height:1.35;}
+.rule .ic{font-size:21px;display:block;margin-bottom:4px;}
+.err{text-align:center;padding:60px 20px;color:#778;}
+footer{text-align:center;color:#889;font-size:12px;margin-top:22px;line-height:1.6;}
+</style></head>
+<body>
+<div id="app"></div>
+<script>
+const DATA={"1-1":{"name":"1학년 1반","loc":"본관 2층","g":1,"steps":["교실(본관 2층)","서편 계단","본관 1층","시청각실 앞 현관","운동장"]},"1-2":{"name":"1학년 2반","loc":"본관 2층","g":1,"steps":["교실(본관 2층)","서편 계단","본관 1층","시청각실 앞 현관","운동장"]},"1-3":{"name":"1학년 3반","loc":"본관 2층","g":1,"steps":["교실(본관 2층)","본관 주통로","본관 중앙계단","본관 1층 중앙현관","운동장"]},"1-4":{"name":"1학년 4반","loc":"본관 2층","g":1,"steps":["교실(본관 2층)","본관 주통로","본관 중앙계단","본관 1층 중앙현관","운동장"]},"1-5":{"name":"1학년 5반","loc":"본관 2층","g":1,"steps":["교실(본관 2층)","본관 주통로","본관 중앙계단","본관 1층 중앙현관","운동장"]},"1-6":{"name":"1학년 6반","loc":"본관 3층","g":1,"steps":["교실(본관 3층)","서편 계단","본관 1층","시청각실 앞 현관","운동장"]},"1-7":{"name":"1학년 7반","loc":"본관 3층","g":1,"steps":["교실(본관 3층)","서편 계단","본관 1층","시청각실 앞 현관","운동장"]},"1-8":{"name":"1학년 8반","loc":"본관 3층","g":1,"steps":["교실(본관 3층)","서편 계단","본관 1층","시청각실 앞 현관","운동장"]},"1-9":{"name":"1학년 9반","loc":"본관 3층","g":1,"steps":["교실(본관 3층)","본관 중앙계단","본관 1층","중앙현관","운동장"]},"1-10":{"name":"1학년 10반","loc":"본관 3층","g":1,"steps":["교실(본관 3층)","본관 중앙계단","본관 1층","중앙현관","운동장"]},"1-11":{"name":"1학년 11반","loc":"본관 3층","g":1,"steps":["교실(본관 3층)","본관 중앙계단","본관 1층","중앙현관","운동장"]},"2-1":{"name":"2학년 1반","loc":"후관 2층","g":2,"steps":["교실(후관 2층)","과학실 앞 복도","후관 서편 계단","후관 1층 서편 현관","건물 외부","운동장"]},"2-2":{"name":"2학년 2반","loc":"후관 2층","g":2,"steps":["교실(후관 2층)","과학실 앞 복도","후관 서편 계단","후관 1층 서편 현관","건물 외부","운동장"]},"2-3":{"name":"2학년 3반","loc":"후관 2층","g":2,"steps":["교실(후관 2층)","후관 서편 계단","후관 1층 복도","서편 현관","건물 외부","운동장"]},"2-4":{"name":"2학년 4반","loc":"후관 2층","g":2,"steps":["교실(후관 2층)","후관 동편 계단","후관 1층","동편 출입구","운동장"]},"2-5":{"name":"2학년 5반","loc":"후관 2층","g":2,"steps":["교실(후관 2층)","후관 동편 계단","후관 1층","동편 출입구","운동장"]},"2-6":{"name":"2학년 6반","loc":"후관 2층","g":2,"steps":["교실(후관 2층)","후관 동편 계단","후관 1층","동편 출입구","운동장"]},"2-7":{"name":"2학년 7반","loc":"후관 1층","g":2,"steps":["교실(후관 1층)","후관 1층 중앙현관","운동장"]},"2-8":{"name":"2학년 8반","loc":"후관 1층","g":2,"steps":["교실(후관 1층)","후관 1층 중앙현관","운동장"]},"2-9":{"name":"2학년 9반","loc":"후관 1층","g":2,"steps":["교실(후관 1층)","후관 동편 출입구","운동장"]},"2-10":{"name":"2학년 10반","loc":"후관 1층","g":2,"steps":["교실(후관 1층)","후관 동편 출입구","운동장"]},"2-11":{"name":"2학년 11반","loc":"후관 1층","g":2,"steps":["교실(후관 1층)","후관 동편 출입구","운동장"]},"3-1":{"name":"3학년 1반","loc":"후관 4층","g":3,"steps":["교실(후관 4층)","후관 중앙계단","후관 1층 중앙현관","운동장"]},"3-2":{"name":"3학년 2반","loc":"후관 4층","g":3,"steps":["교실(후관 4층)","후관 중앙계단","후관 1층 중앙현관","운동장"]},"3-3":{"name":"3학년 3반","loc":"후관 4층","g":3,"steps":["교실(후관 4층)","후관 중앙계단","후관 1층 중앙현관","운동장"]},"3-4":{"name":"3학년 4반","loc":"후관 4층","g":3,"steps":["교실(후관 4층)","후관 중앙계단","후관 1층 중앙현관","운동장"]},"3-5":{"name":"3학년 5반","loc":"후관 3층","g":3,"steps":["교실(후관 3층)","구름다리(연결통로, 3층)","본관 3층","본관 계단","본관 1층 현관","운동장"]},"3-6":{"name":"3학년 6반","loc":"후관 3층","g":3,"steps":["교실(후관 3층)","구름다리(연결통로, 3층)","본관 3층","본관 계단","본관 1층 현관","운동장"]},"3-7":{"name":"3학년 7반","loc":"후관 3층","g":3,"steps":["교실(후관 3층)","후관 동편 계단","후관 1층","동편 현관","운동장"]},"3-8":{"name":"3학년 8반","loc":"후관 3층","g":3,"steps":["교실(후관 3층)","후관 동편 계단","후관 1층","동편 현관","운동장"]},"3-9":{"name":"3학년 9반","loc":"후관 3층","g":3,"steps":["교실(후관 3층)","위클래스 앞 복도","후관 서편 계단","후관 1층","서편 현관","운동장"]},"3-10":{"name":"3학년 10반","loc":"후관 3층","g":3,"steps":["교실(후관 3층)","위클래스 앞 복도","후관 서편 계단","후관 1층","서편 현관","운동장"]},"3-11":{"name":"3학년 11반","loc":"후관 3층","g":3,"steps":["교실(후관 3층)","위클래스 앞 복도","후관 서편 계단","후관 1층","서편 현관","운동장"]}};
+
+const ZONE={1:"스탠드 앞",2:"강당·테니스장 쪽",3:"주차장 쪽"};
+const END={
+ bag:{t:"가방 메고 대피 → 운동장에서 바로 하교",
+      s:"6교시가 끝나면 가방을 미리 싸 두세요. 가방을 메고 대피하고, 훈련이 끝나면 운동장에서 바로 하교합니다."},
+ back:{t:"가방 두고 대피 → 교실 복귀 후 하교",
+      s:"가방은 교실에 두고 몸만 대피합니다. 훈련이 끝나면 선생님과 교실로 돌아와 종례 후 하교합니다."}
+};
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+
+function yard(g){
+ const z=(n,x,y,w,h)=>{const on=n===g;return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="8" fill="${on?'var(--gc)':'#fff'}" stroke="${on?'var(--gc)':'#9aa7bb'}" stroke-width="${on?2:1.2}" ${on?'':'stroke-dasharray="4 3"'}/>`+
+  `<text x="${x+w/2}" y="${y+h/2+5}" text-anchor="middle" font-size="${on?15:13}" font-weight="800" fill="${on?'#fff':'#7a869c'}">${n}학년${on?' ★':''}</text>`;};
+ const b=(t,x,y,w,h)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="4" fill="#D9DEE7"/><text x="${x+w/2}" y="${y+h/2+4.5}" text-anchor="middle" font-size="12" font-weight="700" fill="#4a5568">${t}</text>`;
+ return `<svg viewBox="0 0 340 236" role="img" aria-label="운동장 학년별 대피소 위치">
+ <rect x="4" y="4" width="332" height="228" rx="12" fill="#E8F3E8"/>
+ <text x="170" y="222" text-anchor="middle" font-size="12" font-weight="700" fill="#5f7f5f">운동장</text>
+ ${b('강당',14,14,62,96)}${b('스탠드',128,14,84,18)}
+ <rect x="250" y="12" width="78" height="18" rx="4" fill="#fff" stroke="#9aa7bb"/><text x="289" y="25" text-anchor="middle" font-size="11" font-weight="700" fill="#4a5568">교문</text>
+ ${b('주차장',250,36,78,46)}${b('테니스장',14,150,62,66)}
+ ${z(1,124,42,92,42)}${z(2,86,104,96,52)}${z(3,226,104,96,52)}
+</svg>`;}
+function render(){
+ const p=new URLSearchParams(location.search);const cls=p.get('class');const end=p.get('end')==='back'?'back':'bag';
+ const app=document.getElementById('app');
+ if(!cls||!DATA[cls]){app.innerHTML='<div class="wrap"><div class="err">반 정보를 찾을 수 없습니다.<br>담임 선생님이 보내 주신 링크로 다시 들어와 주세요.</div></div>';return;}
+ const c=DATA[cls];document.body.className='g'+c.g;document.title=c.name+' 지진대피 안내 · 대구일중학교';
+ let flow='';c.steps.forEach((s,i)=>{flow+=`<div class="fstep"><span class="fnum">${i+1}</span><div class="fbox">${esc(s)}</div></div>`+(i<c.steps.length-1?'<div class="farr"></div>':'');});
+ app.innerHTML=`
+ <header>
+  <div class="sup">2026 재난대응 지진대피훈련</div>
+  <h1>${esc(c.name)} 대피 안내</h1>
+  <span class="when">📅 10/28(수) 6교시 끝나고 · 약 20분</span>
+ </header>
+ <div class="wrap">
+  <section>
+   <div class="lab">📢 방송이 나오면 이렇게</div>
+   <div class="act"><div class="n">1</div><div><div class="cue">"지진이 발생했습니다" 방송</div><div class="do">책상 아래로 들어가 책상다리를 잡고 머리·목 보호</div><div class="sub">흔들리는 동안에는 절대 움직이지 않아요.</div></div></div>
+   <div class="act"><div class="n">2</div><div><div class="cue">"흔들림이 멈췄습니다" 방송</div><div class="do">선생님을 따라 계단으로 운동장까지 대피</div><div class="sub">복도·계단에서는 가방이나 손으로 머리를 보호해요.</div></div></div>
+   <div class="act"><div class="n">3</div><div><div class="cue">운동장 도착</div><div class="do">${c.g}학년 대피소에 반별 2줄로 서서 인원 확인</div><div class="sub">훈련이 끝날 때까지 건물로 다시 들어가지 않아요.</div></div></div>
+  </section>
+  <section>
+   <div class="lab">🚶 우리 반 대피 경로</div>
+   <div class="flow">${flow}</div>
+   <div class="tip">6교시를 다른 교실(특별실)에서 했다면, 그 교실 선생님 안내에 따라 <b>가장 가까운 계단</b>으로 대피해요.</div>
+  </section>
+  <section class="yard">
+   <div class="lab">📍 운동장 ${c.g}학년 대피소</div>
+   ${yard(c.g)}
+   <div class="cap">우리 학년은 <b>${ZONE[c.g]}</b>에 모여요.</div>
+  </section>
+  <section>
+   <div class="bag"><div class="ic">🎒</div><div><div class="t">${END[end].t}</div><div class="d">${END[end].s}</div></div></div>
+  </section>
+  <section>
+   <div class="lab">⚠️ 꼭 지킬 것</div>
+   <div class="rules">
+    <div class="rule"><span class="ic">🚫</span>엘리베이터<br>타지 않기</div>
+    <div class="rule"><span class="ic">🏃</span>계단에서<br>뛰거나 밀지 않기</div>
+    <div class="rule"><span class="ic">🪟</span>유리창·외벽에서<br>떨어져 걷기</div>
+    <div class="rule"><span class="ic">🏫</span>건물로 다시<br>들어가지 않기</div>
+   </div>
+  </section>
+  <footer>실제 지진이 아닌 훈련입니다.<br>대구일중학교 생활안전부</footer>
+ </div>`;
+}
+render();
+</script>
+</body></html>

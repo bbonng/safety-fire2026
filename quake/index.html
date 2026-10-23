@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ko"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>지진대피훈련 담임 알림장 · 대구일중학교</title>
+<style>
+:root{--navy:#1B2A4A;--sky:#5B9BD5;--gold:#C9A227;--ink:#1A1A1A;--line:#D8E0EC;--bg:#F4F7FB;--red:#C0392B;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Pretendard','Malgun Gothic','맑은 고딕',sans-serif;color:var(--ink);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased;}
+.wrap{max-width:760px;margin:0 auto;padding:0 16px 60px;}
+header{background:linear-gradient(135deg,var(--navy) 0%,#23375f 100%);color:#fff;padding:34px 26px 26px;border-radius:0 0 18px 18px;box-shadow:0 6px 20px rgba(27,42,74,.18);}
+header .sup{color:var(--sky);font-size:14px;font-weight:600;}
+header h1{font-size:28px;font-weight:800;margin:5px 0 8px;}
+header .meta{font-size:14px;color:#cdd9ec;}
+section{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px 22px 24px;margin-top:16px;box-shadow:0 2px 8px rgba(27,42,74,.05);}
+.sh{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:11px;border-bottom:2px solid var(--gold);}
+.sh .num{flex:0 0 30px;height:30px;background:var(--navy);color:#fff;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;}
+.sh h2{font-size:18px;color:var(--navy);font-weight:800;}
+.howto{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px;}
+.howto div{background:#fff;border:1px solid var(--line);border-radius:10px;padding:11px 10px;font-size:13px;font-weight:700;color:var(--navy);text-align:center;line-height:1.4;}
+.howto b{display:block;color:var(--gold);font-size:12px;margin-bottom:2px;}
+.grp{font-size:13.5px;font-weight:800;color:var(--navy);margin:14px 0 8px;padding-left:8px;border-left:4px solid var(--gold);}
+.grp:first-of-type{margin-top:2px;}
+.grid{display:grid;grid-template-columns:repeat(11,1fr);gap:6px;}
+.cb{border:1px solid var(--line);background:#fff;border-radius:8px;padding:9px 0;font-family:inherit;font-weight:800;font-size:14px;color:var(--navy);cursor:pointer;transition:.12s;}
+.cb:hover{border-color:var(--sky);background:#F3F8FE;}
+.cb.on{color:#fff;border-color:transparent;}
+.seg{display:flex;flex-direction:column;gap:8px;}
+.opt{display:flex;gap:11px;align-items:flex-start;border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;cursor:pointer;background:#fff;text-align:left;font-family:inherit;color:var(--ink);transition:.12s;}
+.opt .r{flex:0 0 18px;height:18px;border-radius:50%;border:2px solid #b5c0d1;margin-top:2px;}
+.opt.on{border-color:var(--navy);background:#F3F7FD;}
+.opt.on .r{border:5px solid var(--navy);}
+.opt .t{font-weight:800;font-size:14.5px;color:var(--navy);}
+.opt .t small{font-weight:700;font-size:11.5px;color:#fff;background:var(--gold);border-radius:10px;padding:1px 8px;margin-left:6px;vertical-align:1px;}
+.opt .d{font-size:12.5px;color:#556;margin-top:2px;}
+#out{display:none;}
+#out.show{display:block;}
+.ohead{display:flex;align-items:center;gap:10px;margin-bottom:12px;}
+.tag{color:#fff;font-weight:800;font-size:15px;padding:4px 12px;border-radius:8px;white-space:nowrap;}
+.ohead .z{font-size:13px;color:#556;font-weight:600;}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:14px;}
+.step{background:#fff;border:1.5px solid var(--navy);color:var(--navy);font-weight:700;font-size:12.5px;padding:5px 11px;border-radius:7px;}
+.step:first-child{background:var(--navy);color:#fff;}
+.step:last-child{background:var(--gold);color:#fff;border-color:var(--gold);}
+.arr{color:var(--sky);font-weight:800;}
+.msgl{font-size:12.5px;font-weight:800;color:var(--navy);margin-bottom:6px;}
+textarea{width:100%;min-height:330px;border:1px solid var(--line);border-radius:10px;padding:13px 14px;font-family:inherit;font-size:14px;line-height:1.6;color:var(--ink);background:#FBFCFE;resize:vertical;}
+.btns{display:grid;grid-template-columns:2fr 1fr 1fr;gap:8px;margin-top:10px;}
+.btn{border:none;border-radius:9px;padding:12px 8px;font-family:inherit;font-weight:800;font-size:14px;cursor:pointer;text-decoration:none;text-align:center;display:block;}
+.btn:active{transform:scale(.98);}
+.b1{background:var(--gold);color:#fff;} .b2{background:var(--navy);color:#fff;} .b3{background:#fff;color:var(--navy);border:1.5px solid var(--navy);}
+.hint{font-size:12px;color:#778;margin-top:9px;}
+.empty{text-align:center;color:#8893a6;font-size:14px;padding:6px 0 2px;}
+.tl{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid #EAEFF6;font-size:14px;}
+.tl:last-child{border-bottom:none;}
+.tl .t{flex:0 0 76px;font-weight:800;color:var(--navy);}
+.note{margin-top:12px;background:#FFF8E6;border-left:4px solid var(--gold);padding:10px 13px;border-radius:0 8px 8px 0;font-size:12.5px;color:#6b5500;}
+footer{text-align:center;color:#889;font-size:12px;margin-top:24px;}
+@media(max-width:680px){
+ header h1{font-size:23px;}
+ .grid{grid-template-columns:repeat(6,1fr);}
+ .howto{grid-template-columns:1fr;} .howto div{text-align:left;} .howto b{display:inline;margin-right:6px;}
+ .btns{grid-template-columns:1fr 1fr;} .btns .b1{grid-column:1 / -1;}
+}
+</style></head>
+<body>
+<header>
+ <div class="sup">2026 재난대응 지진대피훈련</div>
+ <h1>담임 선생님 알림장</h1>
+ <div class="meta">2026. 10. 28.(수) 6교시 종료 후 14:40~15:00 · 생활안전부</div>
+ <div class="howto">
+  <div><b>①</b>우리 반 고르기</div>
+  <div><b>②</b>하교 방식 고르기</div>
+  <div><b>③</b>알림장 복사해서 학급방에 붙여넣기</div>
+ </div>
+</header>
+<div class="wrap">
+ <section>
+  <div class="sh"><div class="num">1</div><h2>우리 반</h2></div>
+  <div id="grids"></div>
+ </section>
+ <section>
+  <div class="sh"><div class="num">2</div><h2>하교 방식</h2></div>
+  <div class="seg">
+   <button class="opt" data-end="bag"><span class="r"></span><span><div class="t">가방 메고 대피 → 운동장에서 바로 하교<small>기본</small></div><div class="d">6교시 끝나고 가방을 싸 둔 뒤 메고 대피합니다.</div></span></button>
+   <button class="opt" data-end="back"><span class="r"></span><span><div class="t">가방 두고 대피 → 교실 복귀 후 하교</div><div class="d">담임 선생님이 선택한 반만 해당합니다.</div></span></button>
+  </div>
+ </section>
+ <section>
+  <div class="sh"><div class="num">3</div><h2>알림장 문구</h2></div>
+  <div class="empty" id="empty">위에서 우리 반을 고르면 알림장 문구가 만들어집니다.</div>
+  <div id="out">
+   <div class="ohead"><span class="tag" id="otag"></span><span class="z" id="ozone"></span></div>
+   <div class="flow" id="oflow"></div>
+   <div class="msgl">알림장 문구 (고쳐 써도 됩니다)</div>
+   <textarea id="msg"></textarea>
+   <div class="btns">
+    <button class="btn b1" id="cpMsg">📋 알림장 문구 복사</button>
+    <button class="btn b2" id="cpUrl">🔗 링크만 복사</button>
+    <a class="btn b3" id="pv" target="_blank" rel="noopener">👀 학생 화면</a>
+   </div>
+   <div class="hint">※ 학생은 링크를 누르면 우리 반 대피 경로, 운동장 대피소 위치, 하교 방식을 휴대폰으로 확인합니다.</div>
+  </div>
+ </section>
+ <section>
+  <div class="sh"><div class="num">4</div><h2>당일 흐름 (약 20분)</h2></div>
+  <div class="tl"><div class="t">0~4분</div><div>훈련 시작 방송 → 책상 아래에서 머리·목 보호 (흔들리는 동안 이동 금지)</div></div>
+  <div class="tl"><div class="t">4~12분</div><div>흔들림 종료 방송 → 반별 경로로 운동장 학년별 대피소까지 대피, 2열 종대 집합</div></div>
+  <div class="tl"><div class="t">12~16분</div><div>인솔 교사가 학급 인원 확인 → 안전지원팀장(생활안전부장)에게 이상 유무 보고</div></div>
+  <div class="tl"><div class="t">16~20분</div><div>행동요령 정리·종료 방송, 학교장 상황 종료 → 하교 지도</div></div>
+  <div class="note">학생 인솔은 <b>6교시 수업 담당 교사</b>가 그 교실에서 시작합니다. 특별실에 있는 학생은 가장 가까운 계단으로 대피합니다.</div>
+ </section>
+ <footer>대구일중학교 생활안전부 · 2026 지진대피훈련</footer>
+</div>
+<script>
+const DATA={"1-1":{"name":"1학년 1반","loc":"본관 2층","g":1,"steps":["교실(본관 2층)","서편 계단","본관 1층","시청각실 앞 현관","운동장"]},"1-2":{"name":"1학년 2반","loc":"본관 2층","g":1,"steps":["교실(본관 2층)","서편 계단","본관 1층","시청각실 앞 현관","운동장"]},"1-3":{"name":"1학년 3반","loc":"본관 2층","g":1,"steps":["교실(본관 2층)","본관 주통로","본관 중앙계단","본관 1층 중앙현관","운동장"]},"1-4":{"name":"1학년 4반","loc":"본관 2층","g":1,"steps":["교실(본관 2층)","본관 주통로","본관 중앙계단","본관 1층 중앙현관","운동장"]},"1-5":{"name":"1학년 5반","loc":"본관 2층","g":1,"steps":["교실(본관 2층)","본관 주통로","본관 중앙계단","본관 1층 중앙현관","운동장"]},"1-6":{"name":"1학년 6반","loc":"본관 3층","g":1,"steps":["교실(본관 3층)","서편 계단","본관 1층","시청각실 앞 현관","운동장"]},"1-7":{"name":"1학년 7반","loc":"본관 3층","g":1,"steps":["교실(본관 3층)","서편 계단","본관 1층","시청각실 앞 현관","운동장"]},"1-8":{"name":"1학년 8반","loc":"본관 3층","g":1,"steps":["교실(본관 3층)","서편 계단","본관 1층","시청각실 앞 현관","운동장"]},"1-9":{"name":"1학년 9반","loc":"본관 3층","g":1,"steps":["교실(본관 3층)","본관 중앙계단","본관 1층","중앙현관","운동장"]},"1-10":{"name":"1학년 10반","loc":"본관 3층","g":1,"steps":["교실(본관 3층)","본관 중앙계단","본관 1층","중앙현관","운동장"]},"1-11":{"name":"1학년 11반","loc":"본관 3층","g":1,"steps":["교실(본관 3층)","본관 중앙계단","본관 1층","중앙현관","운동장"]},"2-1":{"name":"2학년 1반","loc":"후관 2층","g":2,"steps":["교실(후관 2층)","과학실 앞 복도","후관 서편 계단","후관 1층 서편 현관","건물 외부","운동장"]},"2-2":{"name":"2학년 2반","loc":"후관 2층","g":2,"steps":["교실(후관 2층)","과학실 앞 복도","후관 서편 계단","후관 1층 서편 현관","건물 외부","운동장"]},"2-3":{"name":"2학년 3반","loc":"후관 2층","g":2,"steps":["교실(후관 2층)","후관 서편 계단","후관 1층 복도","서편 현관","건물 외부","운동장"]},"2-4":{"name":"2학년 4반","loc":"후관 2층","g":2,"steps":["교실(후관 2층)","후관 동편 계단","후관 1층","동편 출입구","운동장"]},"2-5":{"name":"2학년 5반","loc":"후관 2층","g":2,"steps":["교실(후관 2층)","후관 동편 계단","후관 1층","동편 출입구","운동장"]},"2-6":{"name":"2학년 6반","loc":"후관 2층","g":2,"steps":["교실(후관 2층)","후관 동편 계단","후관 1층","동편 출입구","운동장"]},"2-7":{"name":"2학년 7반","loc":"후관 1층","g":2,"steps":["교실(후관 1층)","후관 1층 중앙현관","운동장"]},"2-8":{"name":"2학년 8반","loc":"후관 1층","g":2,"steps":["교실(후관 1층)","후관 1층 중앙현관","운동장"]},"2-9":{"name":"2학년 9반","loc":"후관 1층","g":2,"steps":["교실(후관 1층)","후관 동편 출입구","운동장"]},"2-10":{"name":"2학년 10반","loc":"후관 1층","g":2,"steps":["교실(후관 1층)","후관 동편 출입구","운동장"]},"2-11":{"name":"2학년 11반","loc":"후관 1층","g":2,"steps":["교실(후관 1층)","후관 동편 출입구","운동장"]},"3-1":{"name":"3학년 1반","loc":"후관 4층","g":3,"steps":["교실(후관 4층)","후관 중앙계단","후관 1층 중앙현관","운동장"]},"3-2":{"name":"3학년 2반","loc":"후관 4층","g":3,"steps":["교실(후관 4층)","후관 중앙계단","후관 1층 중앙현관","운동장"]},"3-3":{"name":"3학년 3반","loc":"후관 4층","g":3,"steps":["교실(후관 4층)","후관 중앙계단","후관 1층 중앙현관","운동장"]},"3-4":{"name":"3학년 4반","loc":"후관 4층","g":3,"steps":["교실(후관 4층)","후관 중앙계단","후관 1층 중앙현관","운동장"]},"3-5":{"name":"3학년 5반","loc":"후관 3층","g":3,"steps":["교실(후관 3층)","구름다리(연결통로, 3층)","본관 3층","본관 계단","본관 1층 현관","운동장"]},"3-6":{"name":"3학년 6반","loc":"후관 3층","g":3,"steps":["교실(후관 3층)","구름다리(연결통로, 3층)","본관 3층","본관 계단","본관 1층 현관","운동장"]},"3-7":{"name":"3학년 7반","loc":"후관 3층","g":3,"steps":["교실(후관 3층)","후관 동편 계단","후관 1층","동편 현관","운동장"]},"3-8":{"name":"3학년 8반","loc":"후관 3층","g":3,"steps":["교실(후관 3층)","후관 동편 계단","후관 1층","동편 현관","운동장"]},"3-9":{"name":"3학년 9반","loc":"후관 3층","g":3,"steps":["교실(후관 3층)","위클래스 앞 복도","후관 서편 계단","후관 1층","서편 현관","운동장"]},"3-10":{"name":"3학년 10반","loc":"후관 3층","g":3,"steps":["교실(후관 3층)","위클래스 앞 복도","후관 서편 계단","후관 1층","서편 현관","운동장"]},"3-11":{"name":"3학년 11반","loc":"후관 3층","g":3,"steps":["교실(후관 3층)","위클래스 앞 복도","후관 서편 계단","후관 1층","서편 현관","운동장"]}};
+const BASE="https://bbonng.github.io/safety-fire2026/quake/";
+const GC={1:"#E0A500",2:"#1F7A3D",3:"#1B2A4A"};
+
+const ZONE={1:"스탠드 앞",2:"강당·테니스장 쪽",3:"주차장 쪽"};
+const END={
+ bag:{t:"가방 메고 대피 → 운동장에서 바로 하교",
+      s:"6교시가 끝나면 가방을 미리 싸 두세요. 가방을 메고 대피하고, 훈련이 끝나면 운동장에서 바로 하교합니다."},
+ back:{t:"가방 두고 대피 → 교실 복귀 후 하교",
+      s:"가방은 교실에 두고 몸만 대피합니다. 훈련이 끝나면 선생님과 교실로 돌아와 종례 후 하교합니다."}
+};
+function esc(s){return String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));}
+
+let cur=null,end='bag';
+function ls(k,v){try{if(v===undefined)return localStorage.getItem(k);localStorage.setItem(k,v);}catch(e){return null;}}
+function url(){return BASE+'student.html?class='+cur+(end==='back'?'&end=back':'');}
+function msg(){
+ const c=DATA[cur],[g,n]=cur.split('-');
+ return '[대구일중 지진대피훈련 안내]\n'+g+'학년 '+n+'반 여러분, 10월 28일(수) 6교시가 끝나면 지진대피훈련을 합니다.\n\n'+
+ '📢 방송이 나오면\n'+
+ '① 책상 아래로 들어가 책상다리를 잡고 머리·목 보호 (흔들리는 동안 움직이지 않기)\n'+
+ '② "흔들림이 멈췄습니다" 방송 후 선생님을 따라 계단으로 대피 (엘리베이터 금지, 뛰거나 밀지 않기)\n'+
+ '③ 운동장 '+g+'학년 대피소('+ZONE[c.g]+')에 2줄로 모여 인원 확인\n\n'+
+ '🎒 '+END[end].s+'\n\n'+
+ '우리 반 대피 경로와 대피소 위치는 아래 링크에서 꼭 확인하세요.\n👉 '+url();
+}
+function draw(){
+ document.querySelectorAll('.opt').forEach(o=>o.classList.toggle('on',o.dataset.end===end));
+ document.querySelectorAll('.cb').forEach(b=>{const on=b.dataset.c===cur;b.classList.toggle('on',on);b.style.background=on?GC[DATA[b.dataset.c].g]:'';});
+ if(!cur){return;}
+ const c=DATA[cur];
+ document.getElementById('empty').style.display='none';
+ document.getElementById('out').classList.add('show');
+ const t=document.getElementById('otag');t.textContent=c.name;t.style.background=GC[c.g];
+ document.getElementById('ozone').textContent='운동장 '+c.g+'학년 대피소 · '+ZONE[c.g];
+ document.getElementById('oflow').innerHTML=c.steps.map(s=>'<span class="step">'+esc(s)+'</span>').join('<span class="arr">→</span>');
+ document.getElementById('msg').value=msg();
+ document.getElementById('pv').href=url();
+}
+function copy(text,btn,done){
+ const ok=()=>{const o=btn.textContent;btn.textContent=done;setTimeout(()=>btn.textContent=o,1500);};
+ const fb=()=>{const ta=document.createElement('textarea');ta.value=text;ta.style.position='fixed';ta.style.opacity='0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch(e){}document.body.removeChild(ta);ok();};
+ if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(ok,fb);}else fb();
+}
+(function init(){
+ let h='';[1,2,3].forEach(g=>{h+='<div class="grp">'+g+'학년</div><div class="grid">';
+  for(let n=1;n<=11;n++){const k=g+'-'+n;h+='<button class="cb" data-c="'+k+'">'+n+'반</button>';}h+='</div>';});
+ document.getElementById('grids').innerHTML=h;
+ document.querySelectorAll('.cb').forEach(b=>b.onclick=()=>{cur=b.dataset.c;ls('q-cls',cur);draw();document.getElementById('out').scrollIntoView({behavior:'smooth',block:'start'});});
+ document.querySelectorAll('.opt').forEach(o=>o.onclick=()=>{end=o.dataset.end;ls('q-end',end);draw();});
+ document.getElementById('cpMsg').onclick=e=>copy(document.getElementById('msg').value,e.currentTarget,'✓ 복사됨! 학급방에 붙여넣으세요');
+ document.getElementById('cpUrl').onclick=e=>copy(url(),e.currentTarget,'✓ 복사됨');
+ const sc=ls('q-cls'),se=ls('q-end');if(se==='back'||se==='bag')end=se;if(sc&&DATA[sc])cur=sc;
+ draw();
+})();
+</script>
+</body></html>
